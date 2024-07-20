@@ -1,0 +1,33 @@
+package databasetest.test;
+
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import com.mysql.cj.jdbc.CallableStatement;
+
+import databasetest.testcomponents.BaseTest;
+
+
+public class DatabaseTesting extends BaseTest{
+	Statement s;
+	ResultSet rs;
+	
+	@Test(groups = { "Smoke" })
+	public void mySqlDBConnection() throws SQLException {
+		s = con.createStatement();
+		//ResultSet rs = s.executeQuery("select * from credentials where scenario='zerobalancecard'");
+		rs = s.executeQuery("show tables");
+		String tableName[] = {"credentials", "customers", "departments", "employees", "offices", "orderdetails", "orders", "payments", "productlines", "products", "regions"};
+		int i=0;
+		while(rs.next()) {
+			System.out.println(rs.getString("Tables_in_classicmodels"));
+			String actualTableName = rs.getString("Tables_in_classicmodels");
+			Assert.assertEquals(actualTableName, tableName[i]);
+			i++;
+		}
+	}
+}
