@@ -6,4 +6,5 @@
   <li>Data Mapping Testing or CRUD opration testing (Manual)</li>
   <li>Data intigrity Testing or ACID testing (Manual)</li>
   <li>Contains TestCases.xlsx file</li>
+  <li>https://www.mysqltutorial.org/getting-started-with-mysql/mysql-sample-database/</li>
 </p>
